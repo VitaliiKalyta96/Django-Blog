@@ -38,7 +38,7 @@ class PostAPIViewSet(viewsets.ViewSet):
         serializer = ProductSerializer(products)
         return Response(serializer.data)
         
-    def update(self, request):
+    def update(self, request, pk=None):
         product = Product.object.get(id=pk)
         serializer = ProductSerializer(instatnce=product, data=request.data)
         serializer.is_valid(raise_exception=True)
