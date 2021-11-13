@@ -14,14 +14,13 @@ services:
       
   db:
     image: mysql:8.0
-    container_name: mysql
     restart: always
     ports:
       - "33086:3306"
     environment:
       MYSQL_DATABASE: DB_base
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: root
+      MYSQL_USER: admin
       MYSQL_PASSWORD: word
     volumes:
       - .dbdata:/var/lib/mysql
