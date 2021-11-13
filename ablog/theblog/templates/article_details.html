@@ -7,21 +7,19 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>The blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-	<h4><center>This is my first blog in django.<center></h4>
-	<h3>Post</h3>
-	<ul>
-	{% for post in object_list %}
-	    <li><a href="{% url 'article-detail' post.pk %}">
-	    {{ post.title }}</a> - {{ post.author.first_name }}
-	    {{ post.author.last_name }}</br>
-	    {{ post.body }}</li>
-        {% endfor %}
-	</ul>
+        <h2>{{ post.title }}</h2>
+	<small>By: {{ post.author.first_name }} {{ post.author.last_name }} {{ post.author.email }}</small><br/>
+	<hr>
+	<br/>
+        <p> {{ post.body }}</p>
+
+	<br/><br/>
+	<a href="{% url 'home' %}">Back</a>
     </body>
 </html>
