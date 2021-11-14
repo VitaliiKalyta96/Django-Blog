@@ -22,30 +22,30 @@ class ArticleDetailView(DetailView):
 
 class PostAPIView(viewsets.ViewSet):
     def list(self, request):
-        products = Product.object.all()
-        serializer = ProductSerializer(products, many=True)
+        post_apies = PostApi.object.all()
+        serializer = PostAPISerializers(post_apies, many=True)
         return Response(serializer.data)
         
     def create(self, request):
-        serializer = ProductSerializer(data=requets.data)
+        serializer = PostAPISerializers(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
         
 class PostAPIViewSet(viewsets.ViewSet): 
     def retrieve(self, pk=None):
-        product = Product.object.get(id=pk)
-        serializer = ProductSerializer(products)
+        post_api = PostApi.object.get(id=pk)
+        serializer = PostAPISerializers(post_api)
         return Response(serializer.data)
         
     def update(self, request, pk=None):
-        product = Product.object.get(id=pk)
-        serializer = ProductSerializer(instatnce=product, data=request.data)
+        post_api = PostApi.object.get(id=pk)
+        serializer = PostAPISerializers(instance=post_api, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)    
         
     def destroy(self, request, pk=None):
-        product = Product.object.get(id=pk)
-        product.delete
+        post_api = PostApi.object.get(id=pk)
+        post_api.delete
         return Response(status=status.HTTP_204_NO_CONTENT)
